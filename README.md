@@ -1,94 +1,89 @@
 # LangChain Agentic AI Examples
 
-Practical examples of AI applications built with **LangChain, LangGraph, Python, and Streamlit**. This repository demonstrates how to connect language models to external tools, retrieve information from documents, maintain conversation state, and interact with a relational database.
+A collection of AI applications built with **Python, LangChain, LangGraph, and Streamlit**. Explore retrieval-augmented generation (RAG), tool calling, conversational memory, web search, and natural-language database interaction through working applications.
 
 ## Projects
 
 ### 1. Multi-PDF RAG Chatbot
 
-Ask questions about uploaded PDF documents using retrieval-augmented generation (RAG).
+Ask questions about uploaded PDF documents and retrieve relevant content to support responses.
 
-- Loads PDF documents and splits their text into overlapping chunks.
-- Creates embeddings and an in-memory vector store for semantic retrieval.
-- Exposes document retrieval as a tool for an AI agent.
-- Uses Streamlit to provide a conversational interface.
+- Ingest multiple PDF documents and split text into overlapping chunks.
+- Generate embeddings and build an in-memory vector index.
+- Retrieve the top three semantically relevant chunks.
+- Expose document retrieval as a tool for an AI agent.
+- Provide an interactive chat interface with Streamlit.
 
-**Technologies:** LangChain, OpenAI embeddings, Groq, LangGraph checkpointing, Streamlit.
+**Technologies:** Python, LangChain, LangGraph, OpenAI Embeddings, Groq, Streamlit.
 
 ### 2. Google Search Agent with Conversational Memory
 
-An AI assistant that uses Google Search to retrieve information and streams responses to a chat interface.
+An AI assistant that combines web search with conversational context.
 
-- Integrates Google Serper search with an AI agent.
-- Uses thread-based checkpointing to retain conversation state.
-- Streams responses to the user interface.
+- Integrate Google Serper search as an agent tool.
+- Use a language model to process questions and search results.
+- Maintain conversation state using thread-based checkpointing.
+- Stream responses through a Streamlit interface.
 
-**Technologies:** LangChain, LangGraph, Groq, Google Serper, Streamlit.
+**Technologies:** Python, LangChain, LangGraph, Groq, Google Serper, Streamlit.
 
-### 3. Natural-Language SQL Task Manager
+### 3. SQL Task Management Agent
 
-Manage tasks through natural-language instructions instead of writing SQL queries directly.
+Manage tasks through natural-language instructions and database tools.
 
-- Uses an AI agent with SQL database tools.
-- Supports task creation, retrieval, updates, and deletion.
-- Stores tasks in a SQLite database.
-- Defines task statuses and rules for database operations.
+- Interpret user requests through an LLM-powered agent.
+- Connect the agent to a SQLite database.
+- Support task creation, retrieval, updates, and deletion.
+- Use tool-based workflows to translate requests into database operations.
+- Present the interaction through a conversational interface.
 
-**Technologies:** LangChain, LangGraph, SQLite, SQLDatabaseToolkit, Streamlit.
+**Technologies:** Python, LangChain, SQL, SQLite, LLM tool calling.
 
-## Learning objectives
+## Architecture and concepts
 
-This repository demonstrates:
-
-- Tool calling and agent orchestration.
-- Retrieval-augmented generation and semantic search.
-- Conversation state and in-memory checkpointing.
-- Integration between language models and databases.
-- Building interactive AI applications with Streamlit.
+This repository demonstrates document ingestion, semantic retrieval, agent tool selection, conversational state, external API integration, and database operations.
 
 ## Prerequisites
 
-- Python 3.11 or a compatible version supported by the installed dependencies.
+- Python installed on your computer.
 - Git.
-- API credentials for the model and search providers used by each application.
+- API keys for the model and search services required by your selected application.
 
-## Setup
+## Installation
 
-Clone the repository and enter the project directory:
+Clone the repository:
 
 ```bash
 git clone https://github.com/MehtaVishesh/agentic-ai-langchain-python.git
 cd agentic-ai-langchain-python
 ```
 
-Create and activate a virtual environment:
+Create and activate a virtual environment.
 
-```bash
-python -m venv .venv
-```
-
-Windows PowerShell:
+**Windows PowerShell**
 
 ```powershell
+python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-macOS or Linux:
+**macOS or Linux**
 
 ```bash
+python -m venv .venv
 source .venv/bin/activate
 ```
 
-Install the project dependencies:
+Install the dependencies:
 
 ```bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Create a local `.env` file in the project root. Add the API credentials required by the application you want to run. Do not commit this file.
+## Configuration
 
-Example:
+Create a `.env` file in the project root. Add the API keys required by the application you want to run.
 
 ```dotenv
 OPENAI_API_KEY=your_openai_api_key
@@ -96,37 +91,31 @@ GROQ_API_KEY=your_groq_api_key
 SERPER_API_KEY=your_serper_api_key
 ```
 
-Use only the credentials required by the selected application.
+Replace the placeholder values with your own credentials. Configure only the services that your selected application uses.
 
-## Run an application
+## Run the applications
 
-Run the PDF chatbot:
+**Multi-PDF RAG Chatbot**
 
 ```bash
 streamlit run apps/streamlit_pdf_upload_rag_chatbot.py
 ```
 
-Run the Google Search agent:
+**Google Search Agent**
 
 ```bash
 streamlit run apps/streamlit_google_search_agent_with_memory.py
 ```
 
-Run the SQL task manager:
+**SQL Task Management Agent**
 
 ```bash
 streamlit run apps/task_management_sql_agent.py
 ```
 
-Follow the instructions in the application to interact with the agent.
+Open the local URL displayed by Streamlit in your browser.
 
-## Important implementation details
-
-The PDF chatbot stores its vector index and conversation checkpoints in memory. These are temporary and do not provide persistent storage across application restarts.
-
-The SQL task manager stores its data in a local SQLite database named `my_tasks.db`. Keep local database files and API credentials out of version control.
-
-## Project structure
+## Repository structure
 
 ```text
 .
@@ -138,12 +127,12 @@ The SQL task manager stores its data in a local SQLite database named `my_tasks.
 └── .gitignore
 ```
 
-## For learners
+## Explore the code
 
-Start with the PDF chatbot to understand document ingestion and retrieval. Continue with the search agent to study tools and conversation state. Finish with the SQL task manager to explore database integration.
+Begin with the PDF chatbot to understand document retrieval and embeddings. Then explore the search agent to understand tool calling and conversational state. Finally, examine the SQL agent to see how language models interact with structured data.
 
 ## Author
 
-**Vishesh Mehta** — AI Engineer based in Melbourne, Australia.
+**Vishesh Mehta** — AI Engineer, Melbourne, Australia.
 
 [GitHub](https://github.com/MehtaVishesh) · [LinkedIn](https://www.linkedin.com/in/vishesh-mehta-516427217/)
